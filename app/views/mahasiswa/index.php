@@ -1,5 +1,12 @@
 <div class="container mt-3">
     <div class="row">
+      <div class="col-lg-6">
+        <!-- // class Flasher , method karena statis 'flash' jadi dikasih '::'  -->
+        <?php Flasher::flash() ?>
+      </div>
+
+    </div>
+    <div class="row">
         <div class="col-6">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
@@ -9,9 +16,13 @@
             <h3>Daftar Mahasiswa</h3>
             <ul class="list-group">
                 <?php foreach($data['mhs'] as $mhs) : ?>
-                <li class="list-group-item d-flex justify-content-between align-item-center">
+                <li class="list-group-item">
                     <!-- ketika detail di hover makan masing2 detail akan memiliki id yang berbeda -->
-                    <?= $mhs['Nama'] ?> <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['Id'] ?>" class="badge badge-primary">
+                    <?= $mhs['Nama'] ?> 
+                    <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['Id'] ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('aslina dihapus ?')">
+                        Hapus
+                    </a>
+                    <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['Id'] ?>" class="badge badge-primary float-right ml-1">
                         Detail
                     </a>
                 </li>
@@ -24,11 +35,11 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="judulModal">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

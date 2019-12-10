@@ -30,14 +30,33 @@ class Mahasiswa_model
         $query = "INSERT INTO mahasiswa VALUES ('', :Nama, :Nrp, :Email, :Jurusan)";
 
         $this->db->query($query);
+
         $this->db->bind("Nama", $data['Nama']);
         $this->db->bind("Nrp", $data['Nrp']);
         $this->db->bind("Email", $data['Email']);
         $this->db->bind("Jurusan", $data['Jurusan']);
 
         $this->db->execute();
-        $this->db->rowCount();
+
+        return $this->db->rowCount();
     }
+
+
+    public function hapusDataMahasiswa($data)
+    {
+        // var_dump($data);
+        $query = "DELETE FROM mahasiswa WHERE Id = :Id";
+
+        $this->db->query($query);
+
+        $this->db->bind('Id', $Id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+
 
 
 }
